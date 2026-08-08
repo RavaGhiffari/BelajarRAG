@@ -1,6 +1,7 @@
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
 from rag_engine import RAGEngine
@@ -21,6 +22,13 @@ app = FastAPI(
     title='RAG Inference API',
     description='Backend inference dari qnaRAG (FAISS + phi3 via Ollama).',
     lifespan=lifespan,
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=['http://localhost:5173', 'http://127.0.0.1:5173'],
+    allow_methods=['*'],
+    allow_headers=['*'],
 )
 
 
