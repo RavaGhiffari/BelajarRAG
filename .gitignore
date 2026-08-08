@@ -1,1 +1,11 @@
 .env
+
+# RAG cache
+chunks.json
+faiss_index.bin
+vectors.npy
+answers.json
+
+# Python
+__pycache__/
+*.pyc
